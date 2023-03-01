@@ -49,7 +49,7 @@ jobs:
         run: docker build . --file ./ubuntu-base/Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login -u seawolf89 --password-stdin
+        run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login -u seawolf89 --password-stdin
 
       - name: Push image
         run: |
