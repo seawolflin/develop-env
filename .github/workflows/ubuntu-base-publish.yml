@@ -29,7 +29,7 @@ jobs:
 
       - name: Run tests
         run: |
-            docker build . --file ./ubuntu-base/Dockerfile
+            docker build ./ubuntu-base --file ./ubuntu-base/Dockerfile
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
