@@ -15,7 +15,12 @@ RUN \
   --no-install-recommends -y \
   apt-utils sudo curl git-core gnupg locales \
   nodejs zsh wget nano npm fonts-powerline tmux vim \
-  openssh-client
+  openssh-client python3 \
+  && ln -s /usr/bin/python3 /usr/bin/python
+
+# setup repo
+RUN curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo > /bin/repo \
+  && chmod a+x /bin/repo
 
 # set up locale
 RUN locale-gen en_US.UTF-8
