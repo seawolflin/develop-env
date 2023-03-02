@@ -1,5 +1,6 @@
 FROM seawolf89/ubuntu-base
 
+USER root
 # install yocto tools
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install \
     --no-install-recommends -y \
@@ -9,3 +10,5 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get install \
     libegl1-mesa libsdl1.2-dev pylint3 iproute2 file iptables zstd liblz4-tool
 
 RUN pip install kas
+
+USER $USER
