@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build . --file ./yocto-dev/Dockerfile --tag $IMAGE_NAME
+        run: docker build ./yocto-dev  --file ./yocto-dev/Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
         run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login -u seawolf89 --password-stdin
