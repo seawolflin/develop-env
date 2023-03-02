@@ -16,7 +16,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: ubuntu-base
+  IMAGE_NAME: yocto-dev
 
 jobs:
   # Run tests.
@@ -29,7 +29,7 @@ jobs:
 
       - name: Run tests
         run: |
-            docker build . --file ./ubuntu-base/Dockerfile
+            docker build . --file ./yocto-dev/Dockerfile
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
@@ -48,7 +48,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build . --file ./ubuntu-base/Dockerfile --tag $IMAGE_NAME
+        run: docker build . --file ./yocto-dev/Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
         run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login -u seawolf89 --password-stdin
