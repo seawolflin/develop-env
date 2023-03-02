@@ -37,7 +37,11 @@ RUN sh -c "$(curl -fsSL \
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 #config zsh
-
+COPY .zshrc /home/${USER}/
+RUN \
+  git clone https://github.com/zsh-users/zsh-autosuggestions /home/${USER}/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
+  && git clone https://github.com/zsh-users/zsh-history-substring-search /home/${USER}/.oh-my-zsh/custom/plugins/zsh-history-substring-search \
+  && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/${USER}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 # set workdir
 WORKDIR $WORKSPACE
