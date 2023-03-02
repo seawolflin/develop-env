@@ -12,6 +12,7 @@ on:
       - v*
     paths:
       - 'ubuntu-base/Dockerfile'
+      - '.github/workflows/ubuntu-base-publish.yml'
 
   # Run tests for any PRs.
   pull_request:

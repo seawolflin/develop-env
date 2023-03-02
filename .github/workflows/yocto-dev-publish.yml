@@ -12,6 +12,7 @@ on:
       - v*
     paths:
       - 'yocto-dev/Dockerfile'
+      - '.github/workflows/yocto-dev-publish.yml'
 
   # Run tests for any PRs.
   pull_request:
