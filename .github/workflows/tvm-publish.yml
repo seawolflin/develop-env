@@ -32,9 +32,6 @@ on:
         - demo_vitis_ai
         - docs
 
-  # Run tests for any PRs.
-  pull_request:
-
 env:
   IMAGE_NAME: tvm.${{ inputs.type }}
 
@@ -44,7 +41,6 @@ jobs:
   # See also https://docs.docker.com/docker-hub/builds/
   push:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
 
     permissions:
       contents: read
