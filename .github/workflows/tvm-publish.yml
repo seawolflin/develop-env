@@ -2,6 +2,35 @@ name: tvm-env
 
 on:
   workflow_dispatch:
+    inputs:
+      type:
+        description: 'tvm type'
+        required: true
+        default: 'ci_cpu'
+        type: choice
+        options:
+        - ci_adreno
+        - ci_arm
+        - ci_cortexm
+        - ci_cpu
+        - ci_gpu
+        - ci_hexagon
+        - ci_i386
+        - ci_jekyll
+        - ci_lint
+        - ci_minimal
+        - ci_riscv
+        - ci_wasm
+        - conda_cpu
+        - conda_cuda100
+        - conda_cuda90
+        - demo_android
+        - demo_cpu
+        - demo_gpu
+        - demo_opencl
+        - demo_rocm
+        - demo_vitis_ai
+        - docs
   push:
     # Publish `main` as Docker `latest` image.
     branches:
@@ -18,7 +47,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: tvm.ci_cpu
+  IMAGE_NAME: tvm.${{ inputs.type }}
 
 jobs:
 
@@ -36,7 +65,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build ./tvm  --file ./tvm/Dockerfile.ci_cpu --tag $IMAGE_NAME
+        run: docker build ./tvm  --file ./tvm/Dockerfile.${{ inputs.type }} --tag $IMAGE_NAME
 
       - name: Log into registry
         run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login -u seawolf89 --password-stdin
